@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>funciones</title>
+  </head>
+  <body>
+    <h1>Funciones</h1>
+    <script>
+      //LAS FUNCIONES son bloques de código que cuentan con su propio contenido y que se puede ejecutar en cualquier momento
+      //opcionalmente la funcion puede recibir paramentros o devolver valores
+      //Función declarada
+      function estoEsUnaFuncion() {
+        console.log("uno");
+        console.log("dos");
+        console.log("tres");
+      }
+      function unaFuncionQueDevuelveValor() {
+        return "La función ha retornado una Cadena de texto"; //Cuando el interprete encuentra la palabra return, ignora el resto del código que esté por debajo de ese return
+      }
+
+      //Invocación de función
+      //estoEsUnaFuncion();
+
+      //console.log(unaFuncionQueDevuelveValor());
+      //Esto y lo de arriba es lo mismo
+      let valorDeFuncion = unaFuncionQueDevuelveValor();
+      //console.log(valorDeFuncion);
+
+      //funcion que recibe valores
+      function saludar(nombre = "pedro", edad = 35) {
+        console.log(`Hola, mi nombre es ${nombre} y tengo ${edad} años`);
+      }
+      //saludar("nicolas", 21);
+      //saludar(); //imprime con los valores de los parámetros que le dimos por defecto: pedro y 35
+
+      //Funciones Declaradas VS funciones expresadas
+      //Js eleva las funciones si son declaradas de la siguiente manera: function nombre_funcion () {}
+      funcionDeclarada();
+
+      function funcionDeclarada() {
+        console.log(
+          "Esto es una función declarada, puede invocarse en cualquier parte de nuestro código, incluso antes de que la función sea declarada"
+        );
+      }
+
+      funcionDeclarada();
+
+      //Función anónima: le asignamos una función sin nombre a una constante
+      //funcionExpresada();
+
+      const funcionExpresada = function () {
+        console.log(
+          "Esto es una función expresada, es decir, una función que se le ha asignado como valor a una variable, si invocamos esta función antes de su definición JS nos dirá ' Cannot access 'funcionExpresada' before initialization'"
+        );
+      };
+
+      funcionExpresada();
+    </script>
+  </body>
+</html>

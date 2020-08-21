@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow Functions</title>
+  </head>
+  <body>
+    <h1>Arrow Functions</h1>
+    <script>
+      //Nueva forma de definir funciones anónimas expresadas
+
+      //Esto es una función anónima
+      /* const saludo = function () {
+        console.log("Que le ve");
+      };
+      saludo(); */
+
+      //arrow Function
+      const saludo = () => console.log("Que le ve");
+      saludo();
+
+      const saludoA = nombre => console.log(`Que le ve ${nombre}`);
+      saludoA("nicolas");
+
+      /* const sumar = function (a, b) {
+        return a + b;
+      }; */
+
+      const sumar = (a, b) => a + b;
+      console.log(sumar(20, 30));
+
+      const funcionDeVariasLineas = () => {
+        console.log("Uno");
+        console.log("Dos");
+        console.log("Tres");
+      };
+
+      funcionDeVariasLineas();
+
+      const numeros = [1, 2, 3, 4, 5];
+
+      numeros.forEach((el, index) =>
+        console.log(`${el} está en la posición ${index}`)
+      );
+
+      //THIS
+      //Esto es una función declarada
+      function Perro() {
+        console.log(this); // this acá es window
+      }
+      Perro();
+
+      //objeto
+      const perro = {
+        nombre: "sacho",
+        ladrar: function () {
+          // función dentro del objeto
+          console.log(this); // El this pasa de ser windows a ser el perro
+        },
+      };
+
+      perro.ladrar();
+
+      const perro1 = {
+        nombre: "sacho",
+        ladrar: () => {
+          // función dentro del objeto
+          console.log(this); // Con arrow function el this acá sigue siendo windows y no perro, reconoce el cotexto donde su padre ha sido creado
+        },
+      };
+      perro1.ladrar();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Break & Continue</title>
+  </head>
+  <body>
+    <h1>Break & Continue</h1>
+    <script>
+      //Estas palabras nos ayudan a controlas nuestras estructuras de control como podría ser detenerse en un for cuando llegue a cierto número, o saltarse algún número
+
+      const numeros = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+
+      for (let i = 0; i < numeros.length; i++) {
+        //un if con break para que cuando i esté en la posición 5, se salga del loop
+        if (i === 5) {
+          break;
+        }
+        console.log(numeros[i]);
+      }
+      for (let i = 0; i < numeros.length; i++) {
+        //un if con continue para que cuando i esté en la posición 5, se salta el elemento en la posicion 5 y no le ejecuta el código que se encuentra en el loop
+        if (i === 5) {
+          continue;
+        }
+        console.log(numeros[i]);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototypes</title>
+  </head>
+  <body>
+    <h1>Prototypes</h1>
+    <script>
+      //POO
+      /* 
+      CLASES ----------> Modelo a seguir.
+      OBJETOS ---------> Es una instancia de una clase.
+        atributos --------> Característica o propiedad de un objeto(LOS atributos son variables dentro de un objeto)
+        métodos ----------> son las acciones que un objeto puede realizar (Los métodos son funciones dentro de un objeto)
+      */
+      //PROTOTIPO ---------> Es un mecanismo por el cual un objeto va poder heredar de un objeto padre, atributos o métodos.
+
+      //Acá está mal, creo, copio y cambio los atributos del objeto como lo necesite
+      const animal = {
+        nombre: "Snoopy",
+        sonar() {
+          console.log("Hago sonido porque estoy vivo");
+        },
+      };
+
+      const animal2 = {
+        nombre: "Stuart little",
+        sonar() {
+          console.log("Hago sonido porque estoy vivo");
+        },
+      };
+
+      console.log(animal);
+      console.log(animal2);
+
+      //Función constructora --- Se le llama así porque se construye una sola vez y apartir de ella creo nuevas instancias(objetos)
+      /* function Animal(nombre, raza) {
+        //Atributos
+        this.nombre = nombre;
+        this.raza = raza;
+        //Métodos
+        this.sonar = function () {
+          //al tener esta función en el prototipo, cada vez que creemos un objeto a partir de este, se va a duplicar la función y va a ocupar mucho espacio. Lo ideal es que sacar los métodos y pegarselos al prototípo
+          console.log("Hago sonido porque estoy vivo");
+        };
+      } */
+
+      //Función constructora donde asignamos los métodos al prototipo, no a la función como tal. para mejorar el rendimiento y el espacio en memoria de nuestra aplicación
+
+      //Métodos agregados al protopido de la función constructora
+      Animal.prototype.sonar = function () {
+        console.log("Hago sonido porque estoy vivo");
+      };
+      function Animal(nombre, raza) {
+        //Atributos
+        this.nombre = nombre;
+        this.raza = raza;
+      }
+
+      const snoopy = new Animal("Snoopy", "Perro"),
+        lolaBunny = new Animal("Lola Bunny", "Conejo");
+
+      console.log(snoopy);
+      console.log(lolaBunny);
+    </script>
+  </body>
+</html>

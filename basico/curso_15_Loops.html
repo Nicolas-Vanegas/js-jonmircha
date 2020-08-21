@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loops</title>
+  </head>
+  <body>
+    <h1>Loops</h1>
+    <script>
+      //Ciclos = Loops = Bucles = Loops nos permeten  repetir la ejecución de un código varias veces.
+      //Ejemplo cuando recibimos datos de una api,(estamos viendo todas las compras que hemos hecho en un comercio electrónico) hacemos la petición nos devuelve un objeto con los productos, y decimos, con un bucle que por cada producto vaya pintando una tarjeta del producto.
+
+      //Extructuras que cada vez se utilizan menos.
+      //WHILE Y DO WHILE = MIENTRAS
+      let contador = 0;
+      //Solo se ejecuta si se cumple la condición
+      while (contador < 10) {
+        console.log("while" + contador);
+        contador++;
+      } //Cuando la variable sale del while, sale valiendo 10
+
+      //En el do While siempre se ejecuta al menos 1 vez el bloque que este en el do, ya que el while está después del do
+      do {
+        console.log("do while" + contador);
+        contador++;
+      } while (contador < 10);
+
+      //FOR
+      let contador2 = 10;
+      for (let i = 0; i < contador2; i++) {
+        console.log("for" + " " + i);
+      } //como en While, declaras e inicializas una variable, luego una condición que controla el ciclo y luego un incremento o decremento.
+
+      let numeros = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+      for (let i = 0; i < numeros.length; i++) {
+        console.log(numeros[i]); //Imprimir desde el index 0, mientras i sea menor que la longitud de "numeros cada uno de los index de "numeros".
+      }
+
+      //Variantes del for
+      const Nicolas = {
+        nombre: "Nicolas",
+        apellido: "Vanegas",
+        edad: 21,
+      };
+      //for in nos permite iterar todas las propiedades de un objeto
+      for (const key in Nicolas) {
+        console.log(`Key: ${key}, value: ${Nicolas[key]}`);
+      }
+
+      //for of nos permite recorrer propiedades de cualquier objeto que sea iterable en JS
+      let numeros1 = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+      let cadena = "Hola Mundo";
+      for (const elemento of numeros1) {
+        console.log(elemento);
+      }
+      for (const letra of cadena) {
+        console.log(letra);
+      }
+    </script>
+  </body>
+</html>

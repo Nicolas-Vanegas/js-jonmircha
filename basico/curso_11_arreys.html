@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays</title>
+  </head>
+  <body>
+    <h1>Arrays</h1>
+    <script>
+      const a = [1, true, "Hola", ["A", "B", "C"]];
+      console.log(a);
+      console.log(a.length);
+      console.log(a[2]); //imprime la posición 2="Hola"
+      console.log(a[3][2]); //imprime la letra c
+
+      const b = Array.of("X", "Y", "Z", 9, 8, 7);
+      console.log(b);
+
+      const c = Array(100).fill(false); //un array de 100 posiciones todas inicializadas con false
+      console.log(c);
+
+      //otra forma de crear un arreglo pero YA NO SE USA
+      const d = new Array(1, 2, 3, 4, "sisas");
+      console.log(d);
+
+      //Métodos de arrays
+      const colores = ["Rojo", "Verde", "Azul"];
+      console.log(colores);
+
+      //push para agregarle otro elemento al final
+      colores.push("Negro");
+      console.log(colores);
+
+      //pop para eliminarle el último elemento
+      colores.pop();
+      console.log(colores);
+
+      //Hacer algo por cada elemento del array. En este caso le agrego un li a cada elemento del array
+      colores.forEach(function (el, index) {
+        //el= al elemento... index= indica la posición de cada elemento
+        console.log(`<li id="${index}">${el}</li>`);
+      });
+    </script>
+  </body>
+</html>

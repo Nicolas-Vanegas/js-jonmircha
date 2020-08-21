@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numbers</title>
+  </head>
+  <body>
+    <h1>Numbers</h1>
+    <script>
+      let a = 2;
+      let b = new Number(3);
+      let c = 7.19;
+      let d = "5.6";
+      console.log(typeof c, typeof d); //typeof saber el tipo de valor que es
+
+      console.log(a, b, c);
+      console.log(c.toFixed(1)); //toFixed dice cuantos números decimales quiero
+      console.log(parseInt(c)); // pasar a entero, o imprimir solo la parte entera
+      console.log(parseFloat(c)); // pasa a decimals
+      console.log(a + d); //Esto solo concatena las dos variables, ya una es string y la otra en number
+      console.log(c + parseFloat(d));
+    </script>
+  </body>
+</html>

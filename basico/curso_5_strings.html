@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strings</title>
+  </head>
+  <body>
+    <h1>Strings</h1>
+    <script>
+      /*TODOS LOS TIPOS DE DATOS SON OBJETOS, YA QUE CUENTAN CON PROPIEDADES Y MÉTODOS
+      ---------LAS PROPIEDADES SON ATRIBUTOS QUE TE DAN INFORMACIÓN DEL OBJETO-----------------
+      EJ: String.length = length es una propiedad que tienen los String para saber la longitud de una cadena
+      --------LOS MÉTODOS SON ACCIONES QUE PUEDES REALIZAR CON  EL OBJETO /Terminan con ()-------
+      */
+      //Cadenas de Texto aka String
+      /* let nombre = "Nicolas";
+      let apellido = "Vanegas";
+      let lorem =
+        "Lorem ipsum dolor sit amet consectetur dolor adipisicing elit. Vero aperiam iste sed hic modi voluptatem dolorem? Itaque ab similique in repellat, iusto praesentium debitis nam aperiam, id delectus eaque eos.";
+
+      console.log(nombre, apellido);
+      console.log(
+        nombre.length,
+        apellido.length,
+        nombre.toLowerCase(),
+        apellido.toLocaleUpperCase(),
+        lorem.includes("dolor"), //includes: para buscar si hay cierto elemento dentro del valor de la variable
+        lorem.trim(), //trim: quita los espacios en blanco que ponemos en el valor al inicio y al final
+        lorem.split(" ") //Split: genera un array valores que encuentra cuando hay un espacio
+      ); */
+
+      //---------------------------------------TEMPLATE STRINGS-------------------------------------
+      let nombre = "Nicolas";
+      let apellido = "Vanegas";
+      let saludar = `Hola, mi nombre es ${nombre} ${apellido}`;
+      console.log(saludar);
+      let ul = `
+      <ul>
+        <li>Primavera</li>
+        <li>Verano</li>
+        <li>Otoño</li>
+        <li>Invierno</li>
+      </ul>`;
+      console.log(ul);
+    </script>
+  </body>
+</html>

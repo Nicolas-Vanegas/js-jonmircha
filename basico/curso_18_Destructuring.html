@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destructuring</title>
+  </head>
+  <body>
+    <h1>Destructuring</h1>
+    <script>
+      //La destructuración es una forma de asignar valores a arreglos y objetos
+
+      //con arreglos
+      let numeros = [1, 2, 3];
+      //Si quiero guardar cada uno de los valores en variables diferentes
+      //SIN DESTRUCTURACIÓN
+      let uno = numeros[0];
+      let dos = numeros[1];
+      let tres = numeros[2];
+      console.log(uno, dos, tres);
+
+      //CON DESTRUCTURACIÓN
+      const [one, two, three] = numeros; //guardo cada una de las posiciones del arreglo "numero" en las variables creadas en los corchetes []
+      console.log(one, two, three);
+
+      //con objetos
+      const persona = {
+        nombre: "Nicolas",
+        apellido: "Vanegas",
+        edad: 21,
+      };
+
+      const { nombre, apellido, edad } = persona; //guardo cada propiedad del objeto en una variable con el mismo nombre de la propiedad y con su respectivo valor
+      console.log(nombre, apellido, edad);
+    </script>
+  </body>
+</html>

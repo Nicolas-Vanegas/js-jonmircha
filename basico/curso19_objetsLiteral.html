@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objets Literal</title>
+  </head>
+  <body>
+    <h1>Objects Literal</h1>
+    <script>
+      //Forma de es6 de escribir y asignar atributos y métodos
+
+      //Antes
+      let nombre = "Pedro",
+        edad = 7;
+
+      const perro = {
+        nombre: nombre,
+        edad: edad,
+        raza: "Callejero",
+        ladrar: function () {
+          console.log("Guauu guauuu!!");
+        },
+      };
+      console.log(perro);
+      perro.ladrar();
+
+      //Nuevo
+      const dog = {
+        nombre, //acá JS entiende que el nombre de la propiedad que le quiero asignar es igual al nombre de la variable que le voy a poner, y que el valor de esa propiedad es el mismo que almacena la variable
+        edad,
+        raza: "Callejero",
+        ladrar() {
+          console.log("Guauu guauuu guauu!!");
+        },
+      };
+      console.log(dog);
+      dog.ladrar();
+    </script>
+  </body>
+</html>

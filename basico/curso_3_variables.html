@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables</title>
+  </head>
+  <body>
+    <h1>Variables</h1>
+    <script>
+      var hola = "Hola Mundo"; //var=variable global=windows...tratar de no usarla
+      //variable de ámbito de bloque = let y const
+      let hello = "Hello World"; //No está definida en windows porque usé let y let sola permite que la variable exista en el bloque que ha sido definida
+      /* console.log(hola); */
+      /* console.log(hello); */
+      /* console.log(window.hola); */
+      /* console.log(window.hello); */ //Ambito de bloque
+      if (true) {
+        //si no hay funciones, eleva la variable al ámbito global, cualquier función declarada con var es de ámbito global
+        var a = 3;
+      }
+      var musica = "Rock";
+      /* console.log("Variable música antes del Bloque", musica); */
+      {
+        //Acá var musica es totalmente distinta a var musica de afuera del bloque. ↨↨↨↨ hoisting ↨↨↨↨ sube la variable música y ahora en windows musica = "Pop"
+        var musica = "Pop";
+        /* console.log("Variable música antes del Bloque", musica); */
+      }
+      /* console.log("Variable música después del Bloque", musica); */
+
+      //const lo usamos cuando sabemos que el valor de la variable nunca va a cambiar//No se puede cambiar su valor
+      //las constantes no actuan de igual manera con valores primitivos(string,number...) que con compuestos(object,arrays...)
+      const PI = 3.1416;
+      console.log(PI);
+
+      //Puedes cambiar las propiedades de los valores compuestos
+      const objeto = {
+        nombre: "Nicolas",
+        apellido: "Vanegas",
+      };
+      const colores = ["blanco", "negro", "azul"];
+
+      console.log(objeto, colores);
+      objeto.correo = "nicolassisas@hotmail.com";
+      colores.push("anaranjado");
+      console.log(objeto, colores);
+    </script>
+  </body>
+</html>

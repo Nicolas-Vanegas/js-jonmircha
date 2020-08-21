@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parámetros REST & Operador Spread</title>
+  </head>
+  <body>
+    <h1>Parámetros REST & Operador Spread</h1>
+    <script>
+      //Fundamental para las librerias
+      // parámetros REST son una forma de virtualmente de ir agregando parámetros infinitos dentro de una función o una variable
+      //Parámetros REST
+      function sumar(a, b, ...c) {
+        //...c este parámetro es para agregar más parámetros futuros
+        let resultado = a + b;
+        //Con forEach la función se ejecuta por cada uno de los elementos que venga dentro de ...c
+        c.forEach(function (n) {
+          resultado += n;
+        });
+
+        return resultado;
+      }
+
+      console.log(sumar(1, 2, 3));
+      console.log(sumar(1, 2, 3, 4));
+      console.log(sumar(1, 2, 3, 4, 5));
+      console.log(sumar(1, 2, 3, 4, 5, 6, 10, 10));
+
+      //Operador de propagación o Spread Operator. Si ya tengo un arreglo con cierto número de elemetos pero recibo nuevos parámetros. para no estar concatenando y haciendo push
+      //Spread Operator
+      const arr1 = [1, 2, 3, 4, 5];
+      const arr2 = [6, 7, 8, 9, 0];
+      console.log(arr1, arr2);
+
+      //Nuevo arreglo producto de la unión de los valores de "arr1" y "arr2" y estos quedan iguales, sin nada modificado
+      const arr3 = [...arr1, ...arr2];
+      console.log(arr3);
+    </script>
+  </body>
+</html>

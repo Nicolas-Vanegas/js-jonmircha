@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inheritance</title>
+  </head>
+  <body>
+    <h1>Inheritance</h1>
+    <script>
+      //Métodos agregados al protopido de la función constructora para mejorar el rendimiento
+      Animal.prototype.sonar = function () {
+        console.log("Hago sonido porque estoy vivo");
+      };
+
+      function Animal(nombre, genero) {
+        //Atributos
+        this.nombre = nombre;
+        this.genero = genero;
+      }
+
+      // Herencia Prototipal
+      function Perro(nombre, genero, tamanio) {
+        /* super(); //manda llamar el constructor de la clase padre */
+        this.super = Animal;
+        this.super(nombre, genero);
+        this.tamanio = tamanio;
+      }
+
+      //Asignar el prototipo de perro como una instancia de Animal
+      //Perro está heredando de Animal
+      Perro.prototype = new Animal();
+      //Generarle su propio constructor a Perro, copiado del Animal
+      Perro.prototype.constructor = Perro;
+
+      //Sobreescrutura del método sonar del prototipo padre en el hijo
+      Perro.prototype.sonar = function () {
+        console.log("Soy un perro y mi sonido es un ladrido");
+      };
+
+      //Creo el método ladrar para el prototipo Perro
+      Perro.prototype.ladrar = function () {
+        console.log("Guaaauuu guauuu!!!");
+      };
+
+      const snoopy = new Perro("Snoopy", "Masculino", "Mediano"),
+        lolaBunny = new Animal("Lola Bunny", "Femenino");
+
+      console.log(snoopy);
+      console.log(lolaBunny);
+    </script>
+  </body>
+</html>

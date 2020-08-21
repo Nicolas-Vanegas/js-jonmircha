@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objects</title>
+  </head>
+  <body>
+    <h1>Objects</h1>
+    <script>
+      //En js todo es un objeto
+      //Dentro de un objeto a las variables se les va a llamar propiedades, y a las funciones se les llama método
+      const Nicolas = {
+        nombre: "Nicolas",
+        apellido: "Vanegas",
+        edad: 21,
+        pasatiempos: ["Correr", "Mainkcra", "Sisas"],
+        soltero: true,
+        contacto: {
+          email: "Nicolas.vanegas.p@hotmail.com",
+          instagram: "No me acuerdo",
+          movil: "3163131631",
+        },
+        saludar: function () {
+          console.log("Hola c:");
+        },
+        decirMiNombre: function () {
+          console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`); //este this hace referencia al scope donde nos encontramos, en este caso es el objeto Nicolas
+        },
+      };
+      console.log(Nicolas);
+      console.log(Nicolas.contacto.email);
+      console.log(Nicolas.saludar);
+      Nicolas.saludar();
+      Nicolas.decirMiNombre();
+
+      //keys me lista las llaves del objeto en un array
+      console.log(Object.keys(Nicolas));
+
+      //values me lista los valores de las llaves del objeto en un array
+      console.log(Object.values(Nicolas));
+
+      //hasOwnProperty para saber si la propiedad "nombre" existe en el objeto Nicolas
+      console.log(Nicolas.hasOwnProperty("nombre"));
+    </script>
+  </body>
+</html>
