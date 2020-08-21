@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funciones anónimas autoejecutables</title>
+  </head>
+  <body>
+    <h1>Funciones anónimas autoejecutables</h1>
+    <script>
+      // fue importante con jquery y con vanilla js, antes de los módulos
+      // se crea una encapsulación del código de tal manera que es un mundo aparte, no tienen nombre, se define y se ejecuta en el momento de crearla.
+
+      (function () {
+        console.log("Mi primer IIFE"); // mi primer función anónima autoejecutable
+      })();
+
+      (function (d, w, c) {
+        console.log("Mi segunda IIFE"); // mi primer función anónima autoejecutable
+        console.log(d);
+        console.log(w);
+        c.log("Este es un console.log");
+      })(document, window, console); // le asigno el objeto document a la variable d, el windows = w y console = c
+
+      //diferentes versiones para hacer un IIFE
+      //Clásica
+      (function () {
+        console.log("Versión Clásica");
+      })();
+
+      //La Crockford (JavaScript The God Parts)
+      /* ((function () {
+        console.log("Versión Crockford");
+      })()); */
+
+      //Unaria
+      /* +function () {
+        console.log("Versión Unaria");
+      }(); */
+
+      //Facebook
+      /* !function () {
+        console.log("versión Fecebook");
+      }(); */
+    </script>
+  </body>
+</html>

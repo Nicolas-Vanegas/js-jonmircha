@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alert Confirm Prompt</title>
+  </head>
+  <body>
+    <h1>Alert Confirm Prompt</h1>
+    <script>
+      /* //Alert, solo te da la un botón de "ok"
+       window.alert("Hola, esto es una alerta"); 
+      //Confirm, te da los botones de "ok" y de "cancel"
+       window.confirm("Hola, esto es una confirmación"); 
+      //Prompt, puedes darle datos por el navegador
+      window.prompt(
+        "Hola, esto es un prompt y le permite al usuario ingresar un valor"
+      ); */
+
+      let alerta = alert("Hola, esto es una alerta"),
+        confirmar = confirm("Hola, esto es una confirmación"),
+        aviso = prompt(
+          "Hola, esto es un aviso y le permite al usuario ingresar un valor"
+        );
+
+      //la alerta no valida nada
+      console.log(alerta); //undefined
+      //la confirmación valida el botón que escogió el usuario
+      console.log(confirmar); //true or false
+      //el aviso recibe lo que escribió el usuario en el prompt
+      console.log(aviso); // lo que escriba o si le da cancelar, devuelve null
+    </script>
+  </body>
+</html>

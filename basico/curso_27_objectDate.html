@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Date</title>
+  </head>
+  <body>
+    <h1>Object Date</h1>
+    <script>
+      console.log(Date());
+
+      let fecha = new Date();
+      console.log(fecha);
+      //número del día del mes
+      console.log(fecha.getDate());
+      //número del día de la semana
+      console.log(fecha.getDay());
+      //número del mes
+      console.log(fecha.getMonth());
+      //número del año
+      console.log(fecha.getFullYear());
+      //hora
+      console.log(fecha.getHours());
+      //minutos
+      console.log(fecha.getMinutes());
+      //segundos
+      console.log(fecha.getSeconds());
+      //milisegundos
+      console.log(fecha.getMilliseconds());
+      //sólo la fecha en String
+      console.log(fecha.toDateString());
+      //La fecha con la hora en String
+      console.log(fecha.toLocaleString());
+      //sólo la hora hora en string
+      console.log(fecha.toLocaleTimeString());
+
+      //uso horario= 300 minutos del meridiano
+      console.log(fecha.getTimezoneOffset());
+      //con respecto al meridiano 0
+      console.log(fecha.getUTCHours());
+      //Cuantos segundos han pasado desde el primero de Enero de 1970
+      console.log(Date.now());
+
+      let cumpleNicolas = new Date(1999, 2, 24);
+      console.log(cumpleNicolas); //me imprime el día en string, el mes y el año
+    </script>
+  </body>
+</html>

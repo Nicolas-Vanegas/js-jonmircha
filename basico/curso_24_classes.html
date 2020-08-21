@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classes</title>
+  </head>
+  <body>
+    <h1>Classes</h1>
+    <script>
+      //JS compila las "clases" a prototipos, no son clases reales
+
+      //Función constructora
+      /* function Animal(nombre, genero) {
+        //Atributos hay que tenerlos acá, y los métodos se le agregan al padre para mejorar rendimiento y no tener que estar duplicando los métodos por cada instancia que creamos del prototipo
+        this.nombre = nombre;
+        this.genero = genero;
+      }
+      //Métodos
+      this.sonar = function () {
+        console.log("Hago sonido porque estoy vivo");
+      }; */
+
+      //Convertida a clase
+      class Animal {
+        //las clases no reciben parámetros, si lo necesitas tienes que crear el método constructor
+        constructor(nombre, genero) {
+          this.nombre = nombre;
+          this.genero = genero;
+        }
+        //Métodos, acá si se pueden dejar los métodos adentro de la clase, y no se duplicarán por cada objeto que genere de esta clase
+        sonar() {
+          console.log("Hago sonido porque estoy vivo");
+        }
+      }
+
+      //La Herencia en las clases
+      //La clase Perro hereda de la clase Animal
+      class Perro extends Animal {
+        constructor(nombre, genero, tamanio) {
+          //con el método super() se manda a llamar el constructor de la clase padre
+          super(nombre, genero);
+          this.tamanio = tamanio;
+        }
+        //sobreescribo el método sonar
+        sonar() {
+          console.log("Soy un perro y mi sonido es un ladrido");
+        }
+        //creo un nuevo método solo para esta clase
+        ladrar() {
+          console.log("Guuauuuu guauuuu!!!!");
+        }
+      }
+
+      const mimi = new Animal("Mimi", "Hembra"),
+        scooby = new Perro("Scooby", "Macho", "Gigante");
+
+      console.log(mimi);
+      mimi.sonar();
+      console.log(scooby);
+      scooby.sonar();
+      scooby.ladrar();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math</title>
+  </head>
+  <body>
+    <h1>Math</h1>
+    <script>
+      console.log(Math);
+      //Devuelve el valor absoluto
+      console.log(Math.abs(-7.8));
+      //Redondear al entero mayor inmediato
+      console.log(Math.ceil(7.8));
+      //Redondear al entero menor inmediato
+      console.log(Math.floor(7.8));
+      //Redondear al entero más cercano
+      console.log(Math.round(7.51));
+      //Raiz cuadrada
+      console.log(Math.sqrt(81));
+      //Elevar
+      console.log(Math.pow(2, 5));
+      //Sign indica si el número es 0, negativo (con -1) o positivo (con un 1)
+      console.log(Math.sign(-7.8));
+      //random entre 0 y 1
+      console.log(Math.random());
+      //primero genera un número random entre 0 y 1, luego lo multiplica por 1000 para que el numero se multiplique por 1000 y ahora te genera números random entre el 0 y el 1000, y eso lo meto el un Math.round para que redondee eso al número entero más cercano
+      console.log(Math.round(Math.random() * 1000));
+    </script>
+  </body>
+</html>

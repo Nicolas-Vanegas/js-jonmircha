@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Static method, Getter and Setter</title>
+  </head>
+  <body>
+    <h1>Static method, Getter and Setter</h1>
+    <script>
+      //Static method Es un método que se puede ejecutar sin la necesidad de instanciar la clase
+      class Animal {
+        constructor(nombre, genero) {
+          this.nombre = nombre;
+          this.genero = genero;
+        }
+        sonar() {
+          console.log("Hago sonido porque estoy vivo");
+        }
+      }
+
+      class Perro extends Animal {
+        constructor(nombre, genero, tamanio) {
+          super(nombre, genero);
+          this.tamanio = tamanio;
+          this.raza = null;
+        }
+        sonar() {
+          console.log("Soy un perro y mi sonido es un ladrido");
+        }
+        ladrar() {
+          console.log("Guuauuuu guauuuu!!!!");
+        }
+        //-----------------STATIC METHOD-------------------no sale en el prototipo//
+        static queEres() {
+          console.log(
+            "Los perros somos animales mamíferos que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos de los hombres."
+          );
+        }
+        //Los setter y getters son métodos especiales que nos permiten establecer y obtener los valores de atrubutos de nuestra clase
+        //Método de tipo obtenedor...este método nos permite obtener el valor de ña propiedad (raza).
+        get getRaza() {
+          return this.raza;
+        }
+        //Método Establecedor...este método nos permite asignarle valor a la propiedad (raza).
+        set setRaza(raza) {
+          this.raza = raza;
+        }
+      }
+
+      //invocar este método estático
+      Perro.queEres();
+
+      const mimi = new Animal("Mimi", "Hembra"),
+        scooby = new Perro("Scooby", "Macho", "Gigante");
+
+      console.log(mimi);
+      mimi.sonar();
+      console.log(scooby);
+      scooby.sonar();
+      scooby.ladrar();
+      //invocar el get y el set
+      //los métodos de get y set hay que tratarlos como atributos y no como métodos
+      //acá le asigno a setRaza el valor de "Grán Danés"
+      scooby.setRaza = "Grán Danés";
+      //el getRaza es el que almacena ese valor dado con el set y lo retorna
+      console.log(scooby.getRaza);
+    </script>
+  </body>
+</html>

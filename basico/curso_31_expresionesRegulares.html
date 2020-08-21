@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expresiones Regulares</title>
+  </head>
+  <body>
+    <h1>Expresiones Regulares</h1>
+    <script>
+      //Expresiones Regulares: Secuencias de caracteres que forman un patrón de busqueda, principalmente utilizado para busqueda en cadenas de texto
+      //Ejemplos: Podrían servir para validar si una tarjeta es visa o master card, o para validar si en un correo cuando lo vas a crear sólamente estás escribiendo caracteres
+
+      let cadena =
+        "Lorem ipsum lorem dolor sit amet consectetur adipisicing elit. Reiciendis alias nihil earum nostrum, voluptatum in 9 nemo! Dolorum quia vero cumque! Omnis expedita dolore reprehenderit quae facere officiis voluptatibus ullam deleniti.";
+      let expReg = new RegExp("lorem", "ig"); //busca la palabra "lorem" y la "g" es una bandera para que se busquen todos los lorem de la cadena, no sólamente la primera "lorem",la bandera "i" sirve para ignorar las mayúsculas
+      //lo mismo de arriba
+      /* let expReg2 = /[0-9]/gi; //validar si hay números del 0 al 9 */
+      let expReg2 = /lorem{1,4}/gi; //la palabra lorem se tiene que repetir de 1 a 4 veces para validar true.
+
+      console.log(expReg.test(cadena)); //ver si la expReg existe dentro de la cadena te devuelve true
+      console.log(expReg.exec(cadena)); //devuelve un arreglo
+      console.log(expReg2.test(cadena)); //ver si la expReg2 existe dentro de la cadena
+      console.log(expReg2.exec(cadena)); //devuelve un arreglo
+    </script>
+  </body>
+</html>

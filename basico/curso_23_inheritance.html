@@ -14,7 +14,7 @@
       };
 
       function Animal(nombre, genero) {
-        //Atributos
+        //Atributos hay que tenerlos acá, y los métodos se le agregan al padre para mejorar rendimiento y no tener que estar duplicando los métodos por cada instancia que creamos del prototipo
         this.nombre = nombre;
         this.genero = genero;
       }
@@ -43,11 +43,34 @@
         console.log("Guaaauuu guauuu!!!");
       };
 
+      //Conejo está heredando de Animal - Es una instancia de animal
+      function Conejo(nombre, genero, color) {
+        this.super = Animal;
+        this.super(nombre, genero);
+        this.color = color;
+      }
+
+      Conejo.prototype = new Animal();
+      Conejo.prototype.constructor = Conejo;
+
+      Conejo.prototype.sonar = function () {
+        console.log("Soy un conejo y mi sonido es un ronrroneo");
+      };
+
+      Conejo.prototype.ronrroneo = function () {
+        console.log("rrrrrrrrrrrrrrrr");
+      };
+
       const snoopy = new Perro("Snoopy", "Masculino", "Mediano"),
-        lolaBunny = new Animal("Lola Bunny", "Femenino");
+        lolaBunny = new Conejo("Lola Bunny", "Femenino", "piel");
 
       console.log(snoopy);
+      snoopy.sonar();
+      snoopy.ladrar();
+
       console.log(lolaBunny);
+      lolaBunny.sonar();
+      lolaBunny.ronrroneo();
     </script>
   </body>
 </html>

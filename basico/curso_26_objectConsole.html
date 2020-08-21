@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Console</title>
+  </head>
+  <body>
+    <h1>Object Console</h1>
+    <script>
+      console.log("Un registro de lo que ha pasado en nuestra aplicación");
+      console.error("Esto es un error");
+      console.warn("Esto es un aviso");
+      console.info("Esto es un mensaje informativo");
+
+      let nombre = "Nicolas",
+        apellido = "Vanegas",
+        edad = 21;
+
+      console.log(nombre, apellido, edad);
+      console.log(
+        `hola, mi nombre es ${nombre} ${apellido} y tengo ${edad} años.`
+      );
+      console.log(
+        `hola, mi nombre es %s %s y tengo %d años.`,
+        nombre,
+        apellido,
+        edad
+      );
+
+      console.clear("Borra lo de la consola");
+      console.log(document); //document es la representación del html a través de js
+      console.dir(document); //Con log te muestra todo el html, con dir te muestra los atributos y métodos html
+      console.clear();
+
+      console.group("Cursos de @jonmircha en Youtube");
+      console.log("Curso de JavaScript");
+      console.log("Curso de Node");
+      console.log("Curso de PHP");
+      console.log("Curso de PWAs");
+      console.log("Curso de Diseño y Programación Web");
+      console.groupEnd();
+      console.clear();
+
+      console.table(Object.entries(console).sort()); //entries para generar una fila por cada una de las propiedades de console.//sort para ordenar por alfabeto
+
+      const numeros = [1, 2, 3, 4, 5],
+        vocales = ["a", "e", "i", "o", "u"];
+
+      console.table(numeros);
+      console.table(vocales);
+
+      const perro = {
+        nombre: "fifi",
+        raza: "Chiguagua",
+        color: "Magenta",
+      };
+      console.table(perro);
+      console.clear();
+
+      //saber el tiempo exacto que se demora una petición
+      console.time("Cuánto tarda mi código");
+      const arreglo = Array(1000000);
+
+      for (let i = 0; i < arreglo.length; i++) {
+        arreglo[i] = i; //en el index i del arreglo asignale el número de dicha posición
+      }
+      console.timeEnd("Cuánto tarda mi código");
+      console.clear();
+
+      for (let i = 0; i <= 100; i++) {
+        console.count("código for"); //para contar la cantidad de veces que se ejecuta un código
+        console.log(i);
+      }
+      console.clear();
+
+      let x = 3,
+        y = 2,
+        pruebaXY = "Se espera que X siempre sea menor que Y";
+
+      console.assert(x < y, (x, y, pruebaXY)); //hace un mini test con la condición que tiene adentro
+    </script>
+  </body>
+</html>
