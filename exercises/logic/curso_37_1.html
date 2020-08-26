@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios 4/10</title>
+  </head>
+  <body>
+    <h1>Ejercicios 4/10</h1>
+    <script>
+      /*12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.*/
+
+      const primo = (numero = undefined) => {
+        modulo2 = numero % 2;
+        modulo3 = numero % 3;
+        if (numero === undefined) return console.warn("No ingresaste un número");
+
+        if (typeof numero !== "number") return console.error("Tipo de valor erroneo");
+
+        if (numero === 0) return console.warn("El número no puede ser 0");
+
+        if (Math.sign(numero) === -1) return console.error("El número no puede ser negativo");
+
+        if ((modulo2 === 1 && modulo3 !== 0 && numero > 2) || numero === 2 || numero === 3) {
+          console.log(`${numero} es primo`);
+        } else {
+          console.log(`${numero} no es primo`);
+        }
+      };
+
+      /* primo(11);
+      primo(33); */
+
+      /*13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.*/
+
+      const par = (numero = undefined) => {
+        if (numero === undefined) return console.warn("No ingresaste un número");
+
+        if (typeof numero !== "number") return console.error("Tipo de valor erroneo");
+
+        return numero % 2 === 0 ? console.log(`${numero} es par`) : console.log(`${numero} es impar`);
+      };
+
+      /* par(69089); */
+
+      /*14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.*/
+
+      const convertidorGrados = (grados = undefined, tipo = undefined) => {
+        if (grados === undefined) return console.warn("No ingresaste una temperatura");
+
+        if (tipo === undefined) return console.warn("No ingresaste el tipo de temperatura");
+
+        if (typeof grados !== "number") return console.error("Tienes que ingresar una letra como 'c' o 'd'");
+
+        if (typeof tipo !== "string") return console.error("Tienes que ingresar una letra como 'c' o 'd'");
+
+        tipo = tipo.toLowerCase();
+        switch (tipo) {
+          case "c":
+          case "celsius":
+            return console.log(`${grados}°C = ${Math.round(grados * (9 / 5) + 32)}°F`);
+            break;
+          case "f":
+          case "fahrenheit":
+            return console.log(`${grados}°F = ${Math.round((grados - 32) * (5 / 9))}°F`);
+            break;
+          default:
+            return console.log("Error en el ingreso de datos");
+            break;
+        }
+      };
+
+      /* convertidorGrados("106", 12);
+      convertidorGrados("", "c");
+      convertidorGrados(0, "c");
+      convertidorGrados(32, "f"); */
+
+      //--------------------------------------------------------- Forma del profesor ----------------------------------------------------------
+
+      /*12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.*/
+
+      const numeroPrimo = (numero = undefined) => {
+        if (numero === undefined) return console.warn("No ingresaste un número");
+
+        if (typeof numero !== "number") return console.error("Tipo de valor erroneo");
+
+        if (numero === 0) return console.warn("El número no puede ser 0");
+
+        if (Math.sign(numero) === -1) return console.error("El número no puede ser negativo");
+
+        let divisible = false;
+
+        for (let i = 2; i < numero; i++) {
+          //si el número no es divisible por 2, entonces el módulo va a dar distinto que 0 y va a seguir validando con el número 3...Si si es divisible cambia el valor de la variable divisible a true, y se sale del ciclo.
+          if (numero % i === 0) {
+            divisible = true;
+            break;
+          }
+        }
+
+        return divisible
+          ? console.log(`El número ${numero}, no es primo`)
+          : console.log(`El número ${numero}, es primo`);
+      };
+
+      /* numeroPrimo();
+      numeroPrimo(0);
+      numeroPrimo("sisas");
+      numeroPrimo(79); */
+
+      /*13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.*/
+
+      const numeroParImpar = (numero = undefined) => {
+        if (numero === undefined) return console.warn("No ingresaste un número");
+
+        if (typeof numero !== "number") return console.error("Tipo de valor erroneo");
+
+        return numero % 2 === 0
+          ? console.info(`El número ${numero} es Par`)
+          : console.info(`El número ${numero} es Impar`);
+      };
+
+      /*numeroParImpar(34434);
+        numeroParImpar(-121);
+        numeroParImpar(0); */
+
+      /*14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.*/
+
+      const convertirGrados = (grados = undefined, unidad = undefined) => {
+        if (grados === undefined) return console.warn("No ingresaste una temperatura");
+
+        if (typeof grados !== "number") return console.error(`El valor ${grados}, NO es un número`);
+
+        if (unidad === undefined) return console.warn("No ingresaste el tipo de datos a convertir");
+
+        if (typeof unidad !== "string") return console.error(`El valor ${unidad}, NO es un tipo de grados correcto`);
+
+        //Si la longitud de la unidad ingresada es mayor a 1 letra o es distinta de C o F
+        if (unidad.length !== 1 || !/(C|F)/.test(unidad)) return console.warn("Valor de unidad no reconocido");
+
+        if (unidad === "C") {
+          return console.info(`${grados}°C = ${Math.round(grados * (9 / 5) + 32)}°F`);
+        } else if (unidad === "F") {
+          return console.info(`${grados}°F = ${Math.round((grados - 32) * (5 / 9))}°C`);
+        }
+      };
+
+      /* convertirGrados();
+      convertirGrados("2");
+      convertirGrados(2);
+      convertirGrados(2, true);
+      convertirGrados(2, "hola");
+      convertirGrados(0, "C");
+      convertirGrados(32, "F"); */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios 2/10</title>
+  </head>
+  <body>
+    <h1>Ejercicios 2/10</h1>
+    <script>
+      /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".*/
+
+      const invertirCadena = (cadena = "") =>
+        !cadena
+          ? console.log("No ingresaste una cadena de texto")
+          : //con split parto la cadena en un array y cada letra va a ser un elemento ya que no le puse nada como separador, luego le doy la vuelta y luego lo uno otra vez
+            console.log(cadena.split("").reverse().join(""));
+
+      invertirCadena("Hola Mundo");
+      console.clear();
+
+      /*6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.*/
+
+      const numeroDeVeces = (texto = "", palabraClave = "") => {
+        if (!texto) return console.warn("No ingresaste texto");
+
+        if (typeof texto != "string") return console.error("Tienes que ingresar una cadena");
+
+        if (!palabraClave) return console.warn("No ingresaste la palabra que quieres buscar");
+        else {
+          //pasar el texto a minúsculas
+          texto = texto.toLowerCase();
+          //reemplazamos los saltos de linea por espacios
+          texto.replace(/\r?\n/g, " ");
+          //reemplazamos los espacios seguidor por uno solo
+          texto.replace(/[ ]+/g, " ");
+          //Quitamos los espacios del principio y del final
+          texto.replace(/^ /, "");
+          //Troceamos el texto por los espacios
+          let textoCortado = texto.split(" ");
+          //Creo un nuevo array a partir de otro con los elementos que cumplan la condición
+          let arrayPalabraBuscada = textoCortado.filter(palabraBuscada => palabraBuscada === palabraClave);
+          console.log(` la palabra ${palabraClave} se repite ${arrayPalabraBuscada.length} veces`);
+        }
+      };
+
+      numeroDeVeces("Hola mundo adios mundo", "mundo");
+      console.clear();
+
+      /*7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+       */
+
+      const palindromo = (ingreso = "") => {
+        if (typeof ingreso != "string") return console.error("No ingreses números");
+
+        if (!ingreso) {
+          return console.warn("no ingresaste una palabra o cadena");
+        } else {
+          ingreso = ingreso.toLowerCase();
+          //le quito los espacios en blanco a lo ingresado y lo asigno a otra variable para poder imprimir el ingreso en el console.log con espacios
+          ingresoSinEspacios = ingreso.replace(/ /g, "");
+          //creo una variable que parte, invierte y une la cadena.
+          let invertirCadena = ingreso.split("").reverse().join("");
+          //le quito los espacios en blanco al invertirCadena
+          invertirCadena = invertirCadena.replace(/ /g, "");
+          /* console.log(ingresoSinEspacios);
+          console.log(invertirCadena); */
+
+          return ingresoSinEspacios === invertirCadena
+            ? console.log(`"${ingreso}" Es un palíndromo`)
+            : console.log(`"${ingreso}" No es un palíndromo`);
+        }
+      };
+      palindromo("No deseo ese don");
+      palindromo("adan y eva, ave y nada");
+      palindromo("Reconocer");
+      palindromo("Que le ve");
+      palindromo("");
+      palindromo("numero");
+      console.clear();
+
+      /*8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5. */
+
+      const eliminarPatron = (texto = "", patron = "") => {
+        if (typeof texto != "string" || typeof patron != "string") return console.error("Ingresaste datos incorrectos");
+
+        if (!patron) return console.warn("No ingresaste el patrón a buscar");
+
+        if (!texto) return console.warn("No ingresaste ninguna cadena");
+        else {
+          //busca la palabra la cantidad de veces que esté y la guarda en busqueda
+          let busqueda = new RegExp(patron, "ig");
+          //reemplaza la palabra que estaba almacenada en busqueda, por nada
+          console.log(texto.replace(busqueda, ""));
+        }
+      };
+
+      eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+      console.clear();
+
+      //------------------------------------SOLUCIÓN DEL PROFESOR---------------------------------------------
+      /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".*/
+
+      const invertirChain = (cadena = "") =>
+        !cadena ? console.warn("No ingresaste una cadena de texto") : console.info(cadena.split("").reverse().join(""));
+
+      /* invertirChain();
+      invertirChain("Hola mundo"); */
+
+      /*6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.*/
+
+      const textoEnCadena = (cadena = "", clave = "") => {
+        if (!cadena) return console.warn("No ingresaste el texto largo");
+
+        if (!clave) return console.warn("No ingresaste la palabra a evaluar");
+
+        // i para controlar el ciclo while y el contador de la palabra inicializado en 0
+        let i = 0,
+          contador = 0;
+
+        // -1 porque cuando indexof no detecta lo que estás buscando devuelve un -1, si lo encuentra te devuelve la posición
+        while (i !== -1) {
+          //recorre la cadena y busca el texto
+          i = cadena.indexOf(clave, i);
+          //si encuentra el texto, devuelve la posición, después de la tercera vez que busca, en este caso que la clave solo está 2 veces, devuelve -1 y (SE SALE DEL WHILE) porque ya no hay más, y ya tendría la i en -1 y el contador en dos porque la encuentra dos veces
+          if (i !== -1) {
+            i++;
+            contador++;
+          }
+        }
+        return console.info(`La palabra ${clave} se repite ${contador} veces`);
+      };
+
+      /* textoEnCadena();
+      textoEnCadena("", "mundo");
+      textoEnCadena("hola mundo adios mundo");
+      textoEnCadena("hola mundo adios mundo", "mundo"); */
+
+      /*7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+       */
+
+      const elPalindromo = (palabra = "") => {
+        if (!palabra) return console.warn("No ingresaste el palabra largo");
+
+        palabra = palabra.toLowerCase();
+        let alReves = palabra.split("").reverse().join("");
+
+        return palabra === alReves
+          ? console.info(`Sí es palímdromo, Palabra original: "${palabra}" Palabra al revés: "${alReves}"`)
+          : console.info(`No es palímdromo, Palabra original: "${palabra}" Palabra al revés: "${alReves}"`);
+      };
+      /* elPalindromo();
+      elPalindromo("Hola mundo");
+      elPalindromo("SalAs"); */
+
+      /*8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5. */
+
+      const eliminarCaracteres = (elTexto = "", patron = "") =>
+        !elTexto
+          ? console.warn("No ingresaste el texto")
+          : !patron
+          ? console.warn("No ingresaste el patron de caracteres")
+          : console.info(elTexto.replace(new RegExp(patron, "ig"), ""));
+
+      eliminarCaracteres();
+      eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5");
+      eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+    </script>
+  </body>
+</html>

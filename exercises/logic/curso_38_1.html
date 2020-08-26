@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios 5/10</title>
+  </head>
+  <body>
+    <h1>Ejercicios 5/10</h1>
+    <script>
+      /* 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.*/
+
+      const convertirBinarioDecimal = (numero = undefined, base = undefined) => {
+        if (numero === undefined) return console.warn("No ingresaste el número a convertir");
+
+        if (typeof numero !== "number") return console.error(`El valor ${numero}, NO es un número`);
+
+        if (base === undefined) return console.warn("No ingresaste la base a convertir");
+
+        if (typeof base !== "number") return console.error(`El valor ${base}, NO ees un número`);
+
+        if (base === 2) {
+          //cuando a parseInt le paso dos parámetros, js deduce que quieres pasar un numero y cambiarle a decimal
+          return console.info(`${numero} base ${base} = ${parseInt(numero, base)} base 10`);
+        } else if (base === 10) {
+          //cuando a toString le agredo un parámetro es porque vas a pasar un número con base decimal a otra con otra base
+          return console.info(`${numero} base ${base} = ${numero.toString(base)} base 2`);
+        } else {
+          return console.error("El tipo de base a convertir NO es válido");
+        }
+      };
+
+      /* convertirBinarioDecimal();
+      convertirBinarioDecimal("2");
+      convertirBinarioDecimal(101, 2);
+      convertirBinarioDecimal(101, 10);
+      convertirBinarioDecimal(4, 10);
+ */
+      /*16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.*/
+
+      const descuento = (monto = undefined, descuento = 0) => {
+        if (monto === undefined) return console.warn("No ingresaste un monto");
+
+        if (typeof monto !== "number") return console.error("Tipo de valor erroneo");
+
+        if (monto === 0) return console.warn("El monto no puede ser 0");
+
+        if (Math.sign(monto) === -1) return console.error("El monto no puede ser negativo");
+
+        if (typeof descuento !== "number") return console.error("Tipo de descuento erroneo");
+
+        if (Math.sign(descuento) === -1) return console.error("El monto no puede ser negativo");
+
+        return console.log(
+          `neto = $${monto}. descuento = ${descuento}% El producto queda a $${monto - (descuento * monto) / 100}`
+        );
+      };
+
+      descuento(3000, 20);
+
+      /*17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020). */
+
+      const aniosPasados = (fecha = undefined) => {
+        if (fecha === undefined) return console.warn("No ingresaste fecha");
+
+        // instanceof es si un objeto hace parte de un tipo de objeto
+        //acá si fecha NO ! es una instancia de DATE
+        if (!(fecha instanceof Date)) return console.error("El valor que ingresaste no es una fecha válida");
+
+        let hoyMenosFecha = new Date().getTime() - fecha.getTime(),
+          /* console.log(fecha.getTime());
+        console.log(Date.now()); */
+          aniosEnMs = 1000 * 60 * 60 * 24 * 365,
+          aniosHumanos = Math.floor(hoyMenosFecha / aniosEnMs);
+
+        return Math.sign(aniosHumanos) === -1
+          ? console.log(`Faltan ${Math.abs(aniosHumanos)} años para el ${fecha.getFullYear()}`)
+          : Math.sign(aniosHumanos) === 1
+          ? console.log(`Han pasado ${aniosHumanos} años, desde ${fecha.getFullYear()}.`)
+          : console.log(`Estamos en el año actual ${fecha.getFullYear()}`);
+      };
+
+      aniosPasados(new Date(2043, 4, 23));
+      aniosPasados(new Date(1999, 4, 23));
+
+      /* let sisas = Date.now() - fecha.getTime();
+      console.log(sisas.toDateString()); */
+    </script>
+  </body>
+</html>

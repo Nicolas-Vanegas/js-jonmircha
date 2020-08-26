@@ -13,8 +13,9 @@
 
       let cadena =
         "Lorem ipsum lorem dolor sit amet consectetur adipisicing elit. Reiciendis alias nihil earum nostrum, voluptatum in 9 nemo! Dolorum quia vero cumque! Omnis expedita dolore reprehenderit quae facere officiis voluptatibus ullam deleniti.";
-      let expReg = new RegExp("lorem", "ig"); //busca la palabra "lorem" y la "g" es una bandera para que se busquen todos los lorem de la cadena, no sólamente la primera "lorem",la bandera "i" sirve para ignorar las mayúsculas
       //lo mismo de arriba
+      let expReg = new RegExp("lorem", "ig"); //busca la palabra "lorem" y la "g" es una bandera para que se busquen todos los lorem de la cadena, no sólamente la primera "lorem",la bandera "i" sirve para ignorar las mayúsculas
+
       /* let expReg2 = /[0-9]/gi; //validar si hay números del 0 al 9 */
       let expReg2 = /lorem{1,4}/gi; //la palabra lorem se tiene que repetir de 1 a 4 veces para validar true.
 

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios 3/10</title>
+  </head>
+  <body>
+    <h1>Ejercicios 3/10</h1>
+    <script>
+      /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600.*/
+
+      const numeroAleatorio = () => console.log(Math.round(Math.random() * (600 - 501) + 501));
+
+      /* numeroAleatorio(); */
+
+      /*10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.*/
+
+      const capicuo = (numero = undefined) => {
+        if (numero === undefined) return console.log("No ingresaste el número");
+        numeroString = numero.toString();
+        numeroAlReves = numeroString.split("").reverse().join("");
+
+        return numeroString === numeroAlReves
+          ? console.log(`El número ${numero}  es capicuo. (numero al revés: ${numeroAlReves})`)
+          : console.log(`El número ${numero}  no es capicuo. (numero al revés: ${numeroAlReves})`);
+      };
+
+      /* capicuo();
+      capicuo("23232");
+      capicuo(100909001); */
+
+      /*11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.*/
+
+      const factorial = num => (num == 0 ? 1 : num * factorial(num - 1));
+
+      console.log(factorial(4));
+
+      //--------------------------------------------------------------respuestas Profesor----------------------------------------------------------------
+      /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600.*/
+
+      const aleatorio = () => console.info(Math.floor(Math.random() * 100 + 500));
+
+      /* aleatorio(); */
+
+      /*10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.*/
+
+      const capicuao = (numero = 0) => {
+        if (!numero) return console.warn("No ingresaste un número");
+
+        if (typeof numero !== "number") return console.error("El valor no es un número");
+
+        numero = numero.toString();
+        numeroReves = numero.split("").reverse().join("");
+
+        return numero === numeroReves
+          ? console.info(`Sí es capicua, Número original ${numero}, número al revés ${numeroReves}`)
+          : console.info(`NO es capicua, Número original ${numero}, número al revés ${numeroReves}`);
+      };
+
+      /* capicuao(100909001); */
+
+      /*11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.*/
+
+      /* const factorialo = (numero = undefined) => {
+        if (numero === undefined)
+          return console.warn("No ingresaste un número");
+
+        if (typeof numero != "number")
+          return console.warn("No ingresaste un número");
+
+        if (numero === 0) return console.error("El número no puede ser 0");
+
+        if (Math.sign(numero) === -1)
+          return console.error("El número no puede ser negativo");
+
+        let factorial = 1;
+
+        for (let i = numero; i > 1; i--) {
+          //la i comienza con el valor del número, en este caso 5, y va restando, entonces, factorial que es 1 * 5 = 5(ese 5 se guarda en factorial) repite el ciclo y le baja 1 a la 1, queda en 4 y ahora 4 * el 5 que estaba valiendo factorial, y así sucecivamente
+          factorial = factorial * i;
+          // factorial *= i;
+        }
+        console.log(factorial);
+      };
+
+      factorialo();
+      factorialo("s");
+      factorialo([1, 2, 3]);
+      factorialo(-5);
+      factorialo(5); */
+    </script>
+  </body>
+</html>
