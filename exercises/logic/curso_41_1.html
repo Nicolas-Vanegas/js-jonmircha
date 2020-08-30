@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios 8/10</title>
+  </head>
+  <body>
+    <h1>Ejercicios 8/10</h1>
+    <script>
+      /*24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.*/
+
+      const ordenarNumeros = (arreglo = undefined) => {
+        if (arreglo === undefined) return console.warn("No ingresaste un array de números");
+
+        if (!(arreglo instanceof Array))
+          return console.error("No ingresaste el tipo de dato correcto, ingresa un array");
+
+        if (arreglo.length === 0) return console.error("El arreglo está vacío");
+
+        for (const num of arreglo) {
+          if (typeof num !== "number") return console.error(`El valor ${num}, ingresado, NO es un número`);
+        }
+
+        //creo un array vacio para almacenar los elementos que le voy a sacar al array original
+        let arrayMenorAMayor = Array.of();
+
+        //creo copias de arreglo con slice el cual copia un array con desde un indice a otro slice(2, 4)
+        let arregloBaseMenorAMayor = arreglo.slice();
+
+        //igualo la i a -arreglo.length para que pueda hacer el for hasta que el arreglo esté vacio.
+        for (let i = -arregloBaseMenorAMayor.length; i < arregloBaseMenorAMayor.length; i++) {
+          //para sacar el numero mas chico y puego se lo pongo al array creado para guardar los números de menor a mayor
+          let menor = Math.min(...arregloBaseMenorAMayor);
+          arrayMenorAMayor.push(menor);
+          //acá después de sacarle el número menor, se lo elimino del array inicial para que encuentre el siguiente (1 = solo elimine 1 elemento. indexOf para saber el index del número menor)
+          arregloBaseMenorAMayor.splice(arregloBaseMenorAMayor.indexOf(menor), 1);
+        }
+        //copio el arreglo de menor a mayor y le doy la vuelta
+        let arrayMayorAMenor = arrayMenorAMayor.slice().reverse();
+
+        console.info({
+          menorAMayor: arrayMenorAMayor,
+          MayorAMenor: arrayMayorAMenor,
+        });
+      };
+
+      /* ordenarNumeros([]);
+      ordenarNumeros();
+      ordenarNumeros(232);
+      ordenarNumeros([2, 3, 6, "s"]);
+      ordenarNumeros([7, 12, 54, 8, 6]); */
+
+      /* 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].*/
+
+      const eliminarDuplicados = (array = undefined) => {
+        if (array === undefined) return console.warn("No ingresaste un array de números");
+
+        if (!(array instanceof Array)) return console.error("No ingresaste el tipo de dato correcto, ingresa un array");
+
+        if (array.length === 0) return console.error("El array está vacío");
+
+        //los set no pueden tener duplicados, y pueden ser tanto objetos como arreglos
+        const nuevoArray = Array.from(new Set(array));
+        console.info(nuevoArray);
+      };
+
+      /* eliminarDuplicados(["x", 10, "x", 2, "10", 10, true, true]); */
+
+      //Otra manera de hacerlo
+      /* const myArr = ['😎', '😎', '😎', '😅']
+      const newArr = myArr.filter((el, index) => myArr.indexOf(el) === index)
+      console.log(myArr)
+      console.log(newArr) */
+
+      /* 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5. */
+
+      const promedio = arreglo => {
+        if (arreglo === undefined) return console.warn("No ingresaste un array de números");
+
+        if (!(arreglo instanceof Array))
+          return console.error("No ingresaste el tipo de dato correcto, ingresa un array");
+
+        if (arreglo.length === 0) return console.error("El arreglo está vacío");
+
+        for (const num of arreglo) {
+          if (typeof num !== "number") return console.error(`El valor ${num}, ingresado, NO es un número`);
+        }
+
+        //const array1 = [1,2,3,4];
+        // 1 + 2 + 3 + 4;
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+        console.log(arreglo.reduce(reducer) / arreglo.length);
+      };
+
+      /* promedio();
+      promedio([]);
+      promedio(231);
+      promedio([9, "s", 7, 6, 5, 4, 3, 2, 1, 0]);
+      promedio([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]); */
+
+      /*--------------------------Forma del profe----------------------*/
+
+      /*24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.*/
+
+      const ordenarArreglo = (arr = undefined) => {
+        if (arreglo === undefined) return console.warn("No ingresaste un array de números");
+
+        if (!(arreglo instanceof Array))
+          return console.error("No ingresaste el tipo de dato correcto, ingresa un array");
+
+        if (arreglo.length === 0) return console.error("El arreglo está vacío");
+
+        for (const num of arreglo) {
+          if (typeof num !== "number") return console.error(`El valor ${num}, ingresado, NO es un número`);
+        }
+
+        return console.info({
+          arr,
+          //acá copio el arr en ascendente y con sort lo ordeno
+          ascendente: arr.map(el => el).sort((a, b) => (a > b ? 1 : a < b ? -1 : 0)),
+          descendente: arr
+            .map(el => el)
+            .sort((a, b) => (a > b ? 1 : a < b ? -1 : 0))
+            .reverse(),
+        });
+      };
+    </script>
+  </body>
+</html>

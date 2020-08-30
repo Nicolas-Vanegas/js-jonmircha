@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios 6/10</title>
+  </head>
+  <body>
+    <h1>Ejercicios 6/10</h1>
+    <script>
+      /*18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.*/
+
+      const conteoVocalesYConsonantes = (texto = "") => {
+        if (!texto) console.warn("No ingresaste la cadena");
+
+        if (typeof texto !== "string") console.error("Tipo de dato ingresado inválido");
+
+        texto = texto.toLowerCase();
+        let contadorVocales = 0,
+          contadorConsonantes = 0;
+        for (let i = 0; i < texto.length; i++) {
+          const letra = texto[i];
+          switch (letra) {
+            case "a":
+            case "e":
+            case "i":
+            case "o":
+            case "u":
+              contadorVocales++;
+              break;
+            case " ":
+            case ",":
+            case "!":
+            case "?":
+            case ".":
+            case "-":
+              contadorConsonantes--;
+            default:
+              contadorConsonantes++;
+              break;
+          }
+        }
+        return console.info(`Vocales = ${contadorVocales}, Consonantes = ${contadorConsonantes}`);
+      };
+
+      /* conteoVocalesYConsonantes();
+      conteoVocalesYConsonantes();
+      conteoVocalesYConsonantes("HOLA MunDo");
+      conteoVocalesYConsonantes("Hola mundo"); */
+
+      /*19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.*/
+
+      const nombreValidoInvalido = (nombre = "") => {
+        nombreArray = nombre.split("");
+        let hayOtroCaracter = false;
+        for (let i = 0; i < nombreArray.length; i++) {
+          const element = nombreArray[i];
+          switch (element) {
+            case "0":
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "7":
+            case "8":
+            case "9":
+              hayOtroCaracter = true;
+              break;
+            default:
+              break;
+          }
+        }
+        /* console.log(hayOtroCaracter); */
+        return hayOtroCaracter
+          ? console.log(`El nombre: ${nombre} no correcto`)
+          : console.log(`El nombre: ${nombre} es correcto`);
+      };
+
+      /* nombreValidoInvalido("nico"); */
+
+      /*20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.*/
+
+      const validarEmail = (email = "") => {
+        if (!email) return console.warn("No ingresaste tú correo");
+
+        if (typeof email !== "string") return console.error("tipo de dato ingresado inválido");
+
+        let arrobaNumero = 0,
+          puntoNumero = 0;
+        for (let i = 0; i < email.length; i++) {
+          const caracter = email[i];
+          switch (caracter) {
+            case "@":
+              arrobaNumero++;
+              break;
+            case ".":
+              puntoNumero++;
+            default:
+              break;
+          }
+        }
+        return arrobaNumero === 1 && puntoNumero === 1
+          ? console.info(`el correo ${email} es válido`)
+          : console.info(`el correo ${email} no es válido`);
+      };
+
+      /* validarEmail();
+      validarEmail(223);
+      validarEmail("Nicolasvanegas1@go.com"); */
+
+      //--------------------------------------------------------formas del profesor-----------------------------------------------------------
+
+      /*18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.*/
+
+      const contarLetras = (cadena = "") => {
+        if (!cadena) return console.warn("No ingresaste la cadena");
+
+        if (typeof cadena !== "string") return console.error("Tipo de dato ingresado inválido");
+
+        cadena = cadena.toLowerCase();
+        let vocales = 0,
+          consonantes = 0;
+
+        for (let letra of cadena) {
+          //test para validar si cumple
+          if (/[aeiouáéíóúü]/.test(letra)) vocales++;
+
+          if (/[bcdfghjklmnñpqrstvwxyz]/.test(letra)) consonantes++;
+        }
+
+        //devolver objeto
+        return console.info({
+          cadena,
+          vocales,
+          consonantes,
+        });
+      };
+
+      /*contarLetras();
+      contarLetras(3);
+      contarLetras("hola mundo");
+      */
+
+      /*19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.*/
+
+      const validarNombre = (nombre = "") => {
+        if (!nombre) return console.warn("No ingresaste un nombre");
+
+        if (typeof nombre !== "string") return console.error("Tipo de dato ingresado inválido");
+
+        // el ^ indica que no puede haber nada antes de la expresión y el $ indica que no puede haber algo después de la expresión
+        // [] = agrupadores... + = evalua por cada caracter de la cadena.... \s = espacios en blanco
+        let expresionRegular = /^[A-Za-zÑñÁÉÍÓÚÜáéíóúü\s]+$/g.test(nombre);
+
+        return expresionRegular
+          ? console.log(`El nombre ${nombre} es válido`)
+          : console.log(`El nombre ${nombre} no es válido`);
+      };
+
+      /* validarNombre();
+      validarNombre(3);
+      validarNombre("Nicolas Vanegas");
+      validarNombre("Nicolas Vanegas23"); */
+
+      /*20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.*/
+
+      const validarCorreo = (email = "") => {
+        if (!email) return console.warn("No ingresaste un email");
+
+        if (typeof email !== "string") return console.error("Tipo de dato ingresado inválido");
+
+        // el ^ indica que no puede haber nada antes de la expresión y el $ indica que no puede haber algo después de la expresión
+        // [] = agrupadores... + = evalua por cada caracter de la cadena.... \s = espacios en blanco
+        let expresionRegular = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(email);
+
+        return expresionRegular
+          ? console.log(`El nombre ${email} es válido`)
+          : console.log(`El nombre ${email} no es válido`);
+      };
+
+      /* validarCorreo("niocads.qw@hotmail.oc"); */
+
+      /*Fusión 19-20*/
+      const validarPatron = (cadena = "", patron = undefined) => {
+        if (!cadena) return console.warn("No ingresaste un cadena de texto a evaluar");
+
+        if (typeof cadena !== "string") return console.error("Tipo de dato ingresado inválido");
+
+        if (patron === undefined) return console.warn("No ingresaste un patron a evaluar");
+
+        if (!(patron instanceof RegExp)) return console.error("El patrón no es una expresión regular");
+
+        // el ^ indica que no puede haber nada antes de la expresión y el $ indica que no puede haber algo después de la expresión
+        // [] = agrupadores... + = evalua por cada caracter de la cadena.... \s = espacios en blanco
+        let expresionRegular = patron.test(cadena);
+
+        return expresionRegular
+          ? console.log(`${cadena} cumple con el patrón ingresado`)
+          : console.log(`${cadena} no cumple con el patrón ingresado`);
+      };
+      /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i;
+      validarPatron();
+      validarPatron({});
+      validarPatron("Nicolas vanegas");
+      validarPatron("Nicolas vane2gas", /^[A-Za-zÑñÁÉÍÓÚÜáéíóúü\s]+$/g);
+      validarPatron("Nicolas vanegas", /^[A-Za-zÑñÁÉÍÓÚÜáéíóúü\s]+$/g);
+      validarPatron("Nicolas vanegas", "hola");
+      validarPatron("Nicolas vanegas", /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i);
+    </script>
+  </body>
+</html>
