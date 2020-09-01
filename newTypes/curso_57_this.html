@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THIS</title>
+  </head>
+  <body>
+    <h1>THIS</h1>
+    <script>
+      /**/
+      console.log(this); //window
+      console.log(window);
+      console.log(window === this); //true
+
+      this.nombre = "Contexto Global";
+      console.log(this.nombre); //Contexto Global
+
+      function imprimir() {
+        console.log(this.nombre);
+      }
+      imprimir(); // Contexto Global
+
+      {
+        //bloque
+      }
+      //Está en el contexto Objecto
+      const obj = {
+        nombre: "Contexto Objeto",
+        imprimir: function () {
+          console.log(this.nombre);
+        },
+      };
+
+      obj.imprimir(); //Contexto Objeto
+
+      const obj2 = {
+        nombre: "Contexto Objeto 2",
+        imprimir, //imprimir = imprimir. Pero sigue estando en el obj2
+      };
+      obj2.imprimir(); //Contexto Objeto 2
+
+      //CON ARROW FUNCTION
+      const obj3 = {
+        nombre: "Contexto Objeto 3",
+        imprimir: () => {
+          //La arrow function No crea un scope, agarra el Scope del padre.
+          console.log(this.nombre);
+        },
+      };
+
+      obj3.imprimir(); //Contexto Global
+
+      //función constructora, crea su propio scope
+      function Persona(nombre) {
+        this.nombre = nombre;
+
+        /* //Cuando retornas otra función dentro de una, crea un nuevo scope y como esta función no tiene ninguna propiedad llamada nombre, se va y lee el this del scope global, Acá si nos sirve más una arrow function
+        return function () {
+          console.log(this.nombre);//Contexto Global
+        }; */
+
+        return () => console.log(this.nombre); //Nicolas
+      }
+
+      let nicolas = new Persona("Nicolas");
+      nicolas(); //Nicolas
+    </script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asynchronous and Event Loop</title>
+  </head>
+  <body>
+    <h1>Asynchronous and Event Loop</h1>
+    <script>
+      /*Javascript es de Procesamiento Single thread.
+      1 single thread of execution
+      
+      Operación de CPU y Operaciones de I / O.=Entrada y salida
+      CPU son aquellas que pasan el mayor tiempo consumiendo los procesos de la CPU.
+      I/0 son aquellas que se pasan la mayor cantidad de tiempo esperando la petición del recurso que han solicitado.
+      
+      Operaciones Concurrentes y Paralelas.
+      Concurrencia es cuando dos o más tareas progresan simultáneamente.(pueden ejecutarse a distiempo)
+      Paralelismo es cuando dos o más tareas se ejecutan al mismo tiempo.
+      
+      Operaciones Bloqueantes y No Bloqueantes.
+      Una operación bloqueante es aquella que no va a devolver el control a la aplicación hasta que acabe su tarea
+      
+      Operaciones Síncronas y Asíncronas.
+      Síncrono, la operación ocurre al instante, asíncromo se ejecuta la operación pero no sabe cuando va a volver la respuesta
+      
+      Javascript usa un modelo asíncromo y no bloqueante, con un loop de eventos implementado en un sólo hilo, (single thread) para operaciones de entrada y salida (I/O).
+      */
+
+      /* Código Síncrono Bloqueante*/
+      (() => {
+        console.log("Código Síncrono");
+        console.log("Inicio");
+
+        function dos() {
+          console.log("Dos");
+        }
+
+        function uno() {
+          console.log("Uno");
+          dos();
+          console.log("Tres");
+        }
+
+        uno();
+        console.log("Fin");
+      })();
+
+      /* Código Asíncrono No Bloqueante*/
+      (() => {
+        console.log("Código Síncrono");
+        console.log("Inicio");
+
+        function dos() {
+          setTimeout(function () {
+            console.log("Dos");
+          }, 1000);
+        }
+
+        function uno() {
+          setTimeout(function () {
+            console.log("Uno");
+          }, 0);
+          dos();
+          console.log("Tres");
+        }
+
+        uno();
+        console.log("Fin");
+      })();
+    </script>
+  </body>
+</html>

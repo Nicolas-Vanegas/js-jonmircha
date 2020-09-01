@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Symbol</title>
+  </head>
+  <body>
+    <h1>Symbol</h1>
+    <script>
+      //Symbol es un tipo de dato el cuál nos ayuda a crear una referencia única.
+      //Uno de sus usos principales es crear propiedades privadas de los objetos.
+
+      let id = Symbol("etiqueta para el symbol");
+      let id2 = Symbol("etiqueta para el symbol 2");
+
+      console.log(id === id2);
+      console.log(typeof id, typeof id2);
+      console.log(id, id2);
+
+      const NAME = Symbol("nombre");
+      const GREET = Symbol("saludar"); //SALUDAR
+
+      const person = {
+        //este name es único de este objeto
+        [NAME]: "Nicolas",
+        edad: 21,
+      };
+      console.log(person); //{Symbol(): "Nicolas"}
+
+      person.NAME = "Nicolas Vanegas";
+      console.log(person); //{NAME: "Nicolas", Symbol(): "Nicolas"}
+
+      console.log(person.NAME); //Nicolas Vanegas
+      console.log(person[NAME]); //Nicolas
+
+      person[GREET] = function () {
+        console.log("Hola");
+      };
+
+      console.log(person);
+      person[GREET]();
+
+      for (let property in person) {
+        console.log(property);
+        console.log(person[property]);
+      }
+
+      console.log(Object.getOwnPropertySymbols(person)); //Ver los symbols del objeto person
+    </script>
+  </body>
+</html>

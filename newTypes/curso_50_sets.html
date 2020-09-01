@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sets</title>
+  </head>
+  <body>
+    <h1>Sets</h1>
+    <script>
+      /*Set es un tipo de arreglo que solo acepta valores únicos, hablando de valores primitivos*/
+
+      const set = new Set([1, 2, 4, 5, 6, 2, 2, false, false, true, {}, {}, "hola", "hola", "HOLA"]);
+      console.log(set);
+      //size es como length
+      console.log(set.size);
+
+      const set2 = new Set();
+      set2.add(1);
+      set2.add(2);
+      set2.add(3);
+      set2.add(3);
+      set2.add(4);
+      set2.add(true);
+      set2.add(true);
+      set2.add(false);
+      set2.add({});
+      set2.delete(1);
+      console.log(set2);
+      console.log(set2.size);
+
+      console.log("Recorriendo set");
+
+      for (item of set) {
+        console.log(item);
+      }
+
+      console.log("Recorriendo set2");
+      set2.forEach(item => console.log(item));
+
+      //para recorrer y hacer algo con cada elemento del set. la convertimos en Array y buscamos su posición
+      console.log(Array.from(set)[10]);
+
+      //comprobar si un valor existe dentro de un set
+      console.log(set.has("hola"));
+
+      //borar todo
+      set2.clear();
+      console.log(set2);
+    </script>
+  </body>
+</html>

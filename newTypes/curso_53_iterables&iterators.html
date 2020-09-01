@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iterables and iterators</title>
+  </head>
+  <body>
+    <h1>Iterables and iterators</h1>
+    <script>
+      const iterable = [1, 2, 3, 4, 5];
+
+      //Accedemos al iterador del iterable
+      const iterador = iterable[Symbol.iterator]();
+
+      console.log(iterable);
+      console.log(iterador);
+
+      //El iterador nos devuelve un objeto con dos propiedades: el valor y un done que indica si se acabaron los elementos
+      /* console.log(iterador.next()); //1, false
+      console.log(iterador.next()); //2, false
+      console.log(iterador.next()); //3, false
+      console.log(iterador.next()); //4, false
+      console.log(iterador.next()); //5, false
+      console.log(iterador.next()); //undefined, true */
+
+      let next = iterador.next();
+
+      //recorremos el arreglo iterable y mientras sea false done(osea que no se a acabado el iterable), imprime el valor del elemento y vuelve a realizar el proceso con el siguiente elemento
+      while (!next.done) {
+        console.log(next.value);
+        next = iterador.next();
+      }
+    </script>
+  </body>
+</html>

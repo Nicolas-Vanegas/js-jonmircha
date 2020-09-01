@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asincronismo setTimeout & setInterval</title>
+  </head>
+  <body>
+    <h1>Asincronismo setTimeout & setInterval</h1>
+    <script>
+      /* console.log("inicio");
+      setTimeout(() => {
+        console.log("Ejecutando un setTimeout después de 3000 ms");
+      }, 3000);
+
+      setInterval(() => {
+        console.log("Ejecutando un setInterval, esto se ejecuta indefinidamente cada cierto intervalo de tiempo");
+      }, 1000); */
+
+      /* let temporizador = setTimeout(() => {
+        //cada 1000 milisegundos, se ejecuta la hora local
+        console.log(new Date().toLocaleTimeString());
+      }, 1000);
+
+      //cancela un timeout, el cuál debe estar guardado en una variable
+      clearTimeout(temporizador);
+
+    console.log(`después del clearTimeout`); */
+
+      let temporizador = setInterval(() => {
+        //cada 1000 milisegundos, se ejecuta la hora local
+        console.log(new Date().toLocaleTimeString());
+      }, 1000);
+
+      clearInterval(temporizador);
+
+      console.log("después del clearInterval");
+    </script>
+  </body>
+</html>

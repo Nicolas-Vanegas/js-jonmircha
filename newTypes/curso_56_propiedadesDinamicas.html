@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Propiedades Dinámicas</title>
+  </head>
+  <body>
+    <h1>Propiedades Dinámicas</h1>
+    <script>
+      /*Para crear propiedades al vuelo*/
+
+      let aleatorio = Math.round(Math.random() * 100 + 5);
+      const objUsuarios = {
+        //Acá generaremos propiedades dinamicas dentro del objeto con los [], +5 porque ya agregamos 4 los cuales los sacamos del array
+        [`id_${aleatorio}`]: "valor Aleaorio",
+      };
+      console.log(objUsuarios);
+      const usuarios = ["Nicolas", "Pablo", "Pedro", "el Sisas"];
+
+      //Vamos a hacer que por cada usuario en el arreglo usuarios se le genere al objUsuario una propiedad.
+      usuarios.forEach((usuario, index) => (objUsuarios[`id_${index}`] = usuario));
+      console.log(objUsuarios);
+    </script>
+  </body>
+</html>

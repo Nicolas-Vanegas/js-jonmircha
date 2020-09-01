@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promises</title>
+  </head>
+  <body>
+    <h1>Promises</h1>
+    <script>
+      /*La promesa la podemos ver como un if else. Si la promesa se cumple, es decir, si accedemos al recurso si estamos realizando peticiones a una API o el proceso que queremos la promesa se cumple y se ejecuta el RESOLVE. si por alguna razón falla, la promesa ejecutaría el REJECT*/
+
+      /* 
+      con CALLBACK
+      Function cuadradoCallback(value, callback) {
+        setTimeout(() => {
+          callback(value, value * value);
+        }, 0 | (Math.random() * 100));
+      }
+
+      //callback hell
+      cuadradoCallback(0, (value, result) => {
+        console.log("Inicia Callback");
+        console.log(`Callback: ${value}, ${result}`);
+        cuadradoCallback(1, (value, result) => {
+          console.log(`Callback: ${value}, ${result}`);
+          cuadradoCallback(2, (value, result) => {
+            console.log(`Callback: ${value}, ${result}`);
+            cuadradoCallback(3, (value, result) => {
+              console.log(`Callback: ${value}, ${result}`);
+              cuadradoCallback(4, (value, result) => {
+                console.log(`Callback: ${value}, ${result}`);
+                cuadradoCallback(5, (value, result) => {
+                  console.log(`Callback: ${value}, ${result}`);
+                  console.log(`CALLBACK HELL!!!! 😈😈😈😈`);
+                });
+              });
+            });
+          });
+        });
+      }); */
+
+      function cuadradoPromise(value) {
+        //Si el valor es distinto a un número devuelve una promesa con reject la cual captura el error.
+        if (typeof value !== "number") return Promise.reject("Error compa, ingrese un número, no otras mamadas");
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            //si se cumple, devuelve esta mondá. el resolve
+            resolve({
+              value,
+              result: value * value,
+            });
+          }, 0 | (Math.random() * 100));
+        });
+      }
+
+      //ejecuta la función cuadradoPromise con el valor 0.
+      cuadradoPromise(0)
+        //el then guarda el resolve, el cual construye un objeto, por eso va a davolver un object
+        .then(obj => {
+          console.log("Inicio Promise");
+          console.log(`Promise: ${obj.value}, ${obj.result}`);
+          //después de que se ejecuta la función retorna volver a ejecutar la función pero con el siguiente valor
+          return cuadradoPromise(1);
+        })
+        //acá este método then recibe la respuesta del return del método then anterior.
+        .then(obj => {
+          console.log(`Promise: ${obj.value}, ${obj.result}`);
+          //después de que se ejecuta la función retorna volver a ejecutar la función pero con el siguiente valor
+          return cuadradoPromise(2);
+        })
+        .then(obj => {
+          console.log(`Promise: ${obj.value}, ${obj.result}`);
+          //después de que se ejecuta la función retorna volver a ejecutar la función pero con el siguiente valor
+          return cuadradoPromise("asd");
+        })
+        .then(obj => {
+          console.log(`Promise: ${obj.value}, ${obj.result}`);
+          //después de que se ejecuta la función retorna volver a ejecutar la función pero con el siguiente valor
+          return cuadradoPromise(4);
+        })
+        .then(obj => {
+          console.log(`Promise: ${obj.value}, ${obj.result}`);
+          //después de que se ejecuta la función retorna volver a ejecutar la función pero con el siguiente valor
+          return cuadradoPromise(5);
+        })
+        .then(obj => {
+          console.log(`Promise: ${obj.value}, ${obj.result}`);
+          console.log(`Fin promise`);
+          //el último no retorna más
+        })
+        //Si ocurre un error en algún lado, la captura acá
+        .catch(err => console.error(err));
+    </script>
+  </body>
+</html>

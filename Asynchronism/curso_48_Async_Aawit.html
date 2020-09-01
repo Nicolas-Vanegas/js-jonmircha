@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async and Await</title>
+  </head>
+  <body>
+    <h1>Async and Await</h1>
+    <script>
+      /*Las funciones asincronas van a esperar a que algo se cumpla para poder seguir ejecutando el proceso.
+
+      Las funciones asíncronas trabajan en conjunto con las promesas, no las reemplazan
+      */
+
+      function cuadradoPromise(value) {
+        //En este caso, si es distinto a un numero, lo captura y lo muestra en el catch, al igual que en las promesas solas
+        if (typeof value !== "number") return Promise.reject("Error compa, ingrese un número, no otras mamadas");
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            //si se cumple, devuelve esta mondá. el resolve
+            resolve({
+              value,
+              result: value * value,
+            });
+          }, 0 | (Math.random() * 100));
+        });
+      }
+
+      //decirle a Javascript que la función es asíncrona
+      async function funcionAsincronaDeclarada() {
+        try {
+          console.log("Inicio de Async Function");
+          //Lo bueno es que cada petición la puedo guardar en variables para no tener que estar usando then.
+          //Si no le pones await los valores van a estar en undefined ya que no han llegado pues la promesa tiene un tiempo para que llegue.
+          let obj = await cuadradoPromise(0);
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+          //después de que se ejecuta le cambio los valores a obj para hacer otra acción
+          obj = await cuadradoPromise(1);
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+          obj = await cuadradoPromise(2);
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+          obj = await cuadradoPromise(3);
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+          obj = await cuadradoPromise(4);
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+          obj = await cuadradoPromise("5");
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+          console.log("Fin de Async Function");
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      funcionAsincronaDeclarada();
+
+      const funcionAsincronaExpresada = async () => {
+        try {
+          console.log("Inicio de Async Function");
+          //Lo bueno es que cada petición la puedo guardar en variables para no tener que estar usando then.
+          //Si no le pones await los valores van a estar en undefined ya que no han llegado pues la promesa tiene un tiempo para que llegue.
+          let obj = await cuadradoPromise(6);
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+          //después de que se ejecuta le cambio los valores a obj para hacer otra acción
+          obj = await cuadradoPromise(7);
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+          obj = await cuadradoPromise(8);
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+          obj = await cuadradoPromise(9);
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+          obj = await cuadradoPromise(10);
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+
+          obj = await cuadradoPromise("5da");
+          console.log(`Async Function: ${obj.value}, ${obj.result}`);
+          console.log("Fin de Async Function");
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      funcionAsincronaExpresada();
+    </script>
+  </body>
+</html>

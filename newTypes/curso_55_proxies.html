@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proxies</title>
+  </head>
+  <body>
+    <h1>Proxies</h1>
+    <script>
+      /*Los proxies te permiten crear un objeto basado en un objeto literal inicial
+      Esmás o menos como cuando instancias un nuevo objeto hijo de una clase, pero con el los proxies el objeto a seguir es un objeto literal.
+
+      Proxie realiza una copia de otro objeto y permite que realices ciertas cosas, como validación de propiedades.
+      */
+
+      const persona = {
+        nombre: "",
+        apellido: "",
+        edad: 0,
+      };
+
+      const manejador = {
+        set(obj, property, value) {
+          //esto es para que se condicione que no se le pueden agregar llaves al objeto.
+          //Object.keys nos muestra la lista de las llaves que tiene el objeto. Entonces acá evalua que en en la lista del objeto original exista la propiedad, si no existe, el indexOf nos devuelve un -1(QUE NO EXISTE).
+          if (Object.keys(obj).indexOf(property) === -1) {
+            return console.error(`La propiedad ${property} no existe en el objeto "persona"`);
+          }
+          if ((property === "nombre" || property === "apellido") && !/^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$/g.test(value)) {
+            return console.error(`La propiedad ${property} sólo acepta letras y espacios en blanco`);
+          }
+          //tengo que poner esta mondá para que el objeto reconozca los valores
+          obj[property] = value;
+        },
+      };
+
+      //esto es una copia de persona pero está vinculada con el objeto persona, si agrego acá twitter, a persona se le agrega twitter
+      const nicolas = new Proxy(persona, manejador);
+      nicolas.nombre = "Nicolass2";
+      nicolas.apellido = "Vanegas";
+      nicolas.edad = 21;
+      nicolas.twitter = "monda";
+
+      console.log(nicolas);
+      console.log(persona);
+    </script>
+  </body>
+</html>

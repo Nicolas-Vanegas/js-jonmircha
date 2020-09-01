@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weakSets & weakMaps</title>
+  </head>
+  <body>
+    <h1>weakSets & weakMaps</h1>
+    <!--weak = débil-->
+    <script>
+      /*Esta mondá sirva para el momento de la limpieza de la basura que realiza JS
+      No se puede iterar, no se puede borrar todo de un vergazo, y no se puede verificar su tamaño (no length)*/
+
+      /* const ws = new WeakSet();
+      let valor1 = { valor1: 1 };
+      let valor2 = { valor2: 2 };
+      let valor3 = { valor3: 3 };
+      let valor4 = { valor4: 4 };
+      let valor5 = { valor5: 5 };
+      let valor6 = { valor6: 6 };
+      ws.add(valor1);
+      ws.add(valor2);
+      ws.add(valor3);
+      ws.add(valor4);
+      ws.add(valor5);
+      ws.add(valor6);
+      ws.delete(valor2);
+      ws.delete(valor3);
+
+      console.log(ws);
+
+      console.log(ws.has(valor1)); //true
+      console.log(ws.has(valor3)); //false
+
+      setTimeout(() => {
+        valor1 = null;
+        valor2 = null;
+        valor3 = null;
+      }, 5000);//borra lo del null set */
+
+      /* const wm = new WeakMap();
+
+      let llave1 = {};
+      let llave2 = {};
+      let llave3 = {};
+
+      wm.set(llave1, 1);
+      wm.set(llave2, 2);
+      console.log(wm);
+      console.log(wm.has(llave1)); //true
+
+      console.log(wm.get(llave1)); //return 1
+
+      wm.delete(llave2);
+      console.log(wm);
+
+      wm.set(llave2, 2);
+      wm.set(llave3, 3);
+      console.log(wm);
+
+      setInterval(() => {
+        console.log(wm);
+      }, 1000);
+
+      setTimeout(() => {
+        llave1 = null;
+        llave2 = null;
+        llave3 = null;
+      }, 5000); //borra toda la mondá. ESTO NOS AYUDA PARA MEJORAR EL RENDIMIENTO DE NUESTRA APLICACIÓN */
+    </script>
+  </body>
+</html>

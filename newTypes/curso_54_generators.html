@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generators</title>
+  </head>
+  <body>
+    <h1>Generators</h1>
+    <script>
+      /* Forma más amigable para trabajar con los iteradores */
+
+      //esto indica que es un generador. EL GENERADOR SIRVE PARA VOLVER ITERABLE UNA FUNCIÓN
+      function* iterable() {
+        yield "hola"; //como un return
+        console.log("Hola consola");
+        yield "hola 2";
+        console.log("Seguimos con más instrucciones de muestro código");
+        yield "hola 3";
+        yield "hola 4";
+      }
+
+      let iterador = iterable();
+      /* console.log(iterador.next()); //hola y false
+      console.log(iterador.next()); //hola consola y hola 2 false
+      console.log(iterador.next()); //Seguimos con más instrucciones de nuestro código y el hola 3 con su false
+      console.log(iterador.next()); //hola 4
+      console.log(iterador.next()); //undefined true */
+
+      for (const y of iterador) {
+        console.log(y);
+      }
+
+      //saco todos los yield y los guardo en un arreglo
+      const arr = [...iterable()];
+      console.log(arr);
+
+      function cuadrado(valor) {
+        setTimeout(() => {
+          return console.log({ valor, resultado: valor * valor });
+        }, Math.random() * 1000);
+      }
+
+      function* generador() {
+        console.log("Inicia generator");
+        //como en las funciones async se usaba el await para esperar, acá es el yield
+        yield cuadrado(0);
+        yield cuadrado(1);
+        yield cuadrado(2);
+        yield cuadrado(3);
+        yield cuadrado(4);
+        yield cuadrado(5);
+        console.log("Termina generator");
+      }
+
+      let gen = generador();
+
+      //se ejecutan como se les da la gana
+      for (const y of gen) {
+        console.log(y);
+      }
+    </script>
+  </body>
+</html>
