@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call, Apply, Bind</title>
+  </head>
+  <body>
+    <h1>Call, Apply, Bind</h1>
+    <script>
+      /*Estos métodos nos sirven para conservar la referencia de un Scope en particular*/
+      //BIND = ENLACE
+      this.lugar = "Global";
+
+      function saludar(saludo, aQuien) {
+        console.log(`${saludo} ${aQuien} desde el ${this.lugar}`);
+      }
+
+      saludar();
+
+      const obj = {
+        lugar: "Contexto Objeto",
+      };
+
+      //ejecuta saludar pero con el scope de obj
+      saludar.call(obj, "Hola", "Nicolas");
+      //apply la misma mondá pero utiliza los parámetros en objetos
+      saludar.apply(obj, ["Adios", "Nicolas"]);
+
+      const persona = {
+        nombre: "Nicolas",
+        saludar: function () {
+          console.log(`Hola ${this.nombre}`); //nicolas
+        },
+      };
+
+      persona.saludar(); //Hola Nicolás
+
+      const otraPersona = {
+        saludar: persona.saludar.bind(persona), //Si no pongo el enlace, a la hora de invocar saludar, nos dará Hola undefined.
+      };
+
+      otraPersona.saludar(); //Hola Nicolás
+    </script>
+  </body>
+</html>

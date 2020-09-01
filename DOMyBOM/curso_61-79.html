@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+      :root {
+        --main-color: #f7df1e;
+        --dark-color: #222;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DOM: Document Object Model</h2>
+    <h1>BOM: Browser Object Model</h2>
+    <h1>CSSOM: CSS Object Model</h2>
+    <h2>WEB APIs</h2>
+    <ul>
+      <li>Events</li>
+      <li>Forms</li>
+      <li>AJAX - Fetch</li>
+      <li>History</li>
+      <li>Web Storage</li>
+      <li>Geolocation</li>
+      <!-- aRRASTRAR Y SOLTAR -->
+      <li>Drag & Drop</li>
+      <!-- Pequeña base de datos que se guarda en el navegador web -->
+      <li>Indexed DB</li>
+      <!-- dibujar -->
+      <li>Canvas</li>
+      <!-- Controlar las media Queries en el js -->
+      <li>MatchMedia</li>
+      <li>etc...</li>
+    </ul>
+    <br>
+    <hr>
+    <br>
+    <h3>Manejo del DOM</h3>
+    <p id="que-es">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum cupiditate deleniti optio officia animi earum atque ipsa architecto maiores exercitationem! Adipisci commodi quos laborum. Asperiores facilis eum laudantium amet iure.
+    </p>
+    <!-- Para crear la lista rápido nav#menu>ul>li*5>a{sección $} -->
+    <nav id="menu">
+      <ul>
+        <li><a href="#">Sección 1</a></li>
+        <li><a href="#">Sección 2</a></li>
+        <li><a href="#">Sección 3</a></li>
+        <li><a href="#">Sección 4</a></li>
+        <li><a href="#">Sección 5</a></li>
+      </ul>
+    </nav>
+    <input type="text" name="nombre" placeholder="nombre">
+    <a class="link-dom" href="curso_61-79.html" data-id = "1"data-description = "Document Objext Model" style="background-color: #f7df1e; color: #222">DOM</a>
+    <section class="cards">
+      <figure class="card">
+        <!-- 200/200 is 200 width and 200 height -->
+        <img src="https://placeimg.com/200/200/tech" alt="Tech">
+        <figcaption>Tech</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://placeimg.com/200/200/animals" alt="Animals">
+        <figcaption>Animals</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://placeimg.com/200/200/people" alt="People">
+        <figcaption>People</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://placeimg.com/200/200/arch" alt="Arch">
+        <figcaption>Arch</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://placeimg.com/200/200/nature" alt="Nature">
+        <figcaption>Nature</figcaption>
+      </figure>
+    </section>
+    <script src="dom.js"></script>
+  </body>
+</html>

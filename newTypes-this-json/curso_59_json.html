@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON</title>
+  </head>
+  <body>
+    <h1>JSON Javascript Object Notation</h1>
+    <script>
+      /*JSON Es una interface de lenguaje, provee funciones para convertir valores de js a JSON Formato ligero de intercambio de datos (digamos para que python reciba datos de php y los interprete y devuelvo lo que la otra página necesita) */
+
+      const json = {
+        cadena: "Nicolas",
+        numero: 21,
+        booleano: true,
+        arreglo: ["correr", "programar", "cocinar"],
+        objeto: {
+          twitter: "@monda",
+          email: "Monda@hotmail.com",
+        },
+        nulo: null,
+      };
+
+      console.log(json);
+
+      //Parse analiza una cadena de texto y la convierte en un objeto válido para JS
+      console.log(JSON.parse("{}"));
+      console.log(JSON.parse("[1,2,3]"));
+      console.log(JSON.parse("true"));
+      console.log(JSON.parse("false"));
+      console.log(JSON.parse("19"));
+      console.log(JSON.parse("null"));
+
+      //stringify analiza un objeto y lo convierte en cadena de texto
+      console.log(JSON.stringify({}));
+      console.log(JSON.stringify([1, 2, 3]));
+      console.log(JSON.stringify(true));
+      console.log(JSON.stringify(false));
+      console.log(JSON.stringify(19));
+      console.log(JSON.stringify(null));
+      console.log(JSON.stringify(json));
+    </script>
+  </body>
+</html>
