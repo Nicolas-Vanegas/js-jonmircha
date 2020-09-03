@@ -3,11 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOM</title>
+    <title>DOM Y BOM</title>
     <style>
       :root {
         --main-color: #f7df1e;
         --dark-color: #222;
+      }
+      .cards{
+          border: thin solid var(--dark-color);
+          padding: 1rem;
+      }
+      .card{
+          display: inline-block;
+          background-color: var(--dark-color);
+          color: var(--main-color);
+      }
+
+      .card figcaption{
+          padding: 1rem;
+      }
+
+      .rotate-45{
+          transform: rotate(45deg);
+      }
+
+      .rotate-135{
+          transform: rotate(135deg);
+      }
+
+      .opacity-80{
+          opacity: .8;
+      }
+
+      .sepia{
+          filter: sepia(1);
+      }
+
+      .eventos-flujo div {
+        padding: 4rem;
+        font-size: 2rem;
+        text-align: center;
+      }
+      .uno {
+        background-color: yellow;
+      }
+      .dos {
+        background-color: gold;
+      }
+      .tres {
+        background-color: lightyellow;
       }
     </style>
   </head>
@@ -75,6 +119,48 @@
         <figcaption>Nature</figcaption>
       </figure>
     </section>
-    <script src="dom.js"></script>
+    <template id = "template-card"><!-- el template no se visualiza -->
+      <figure class="card">
+        <img src="" alt="">
+        <figcaption></figcaption>
+      </figure>
+    </template>
+
+    <h3>Eventos en JS</h3>
+    <h4>Manejadores de Eventos</h4>
+    <button onclick="holaMundo()">Evento con atributo HTML</button><!-- Esta mondà està mal vista -->
+    <br><br>
+    <button id="evento-semantico">Evento con manejador semántico</button>
+    <br><br>
+    <button id="evento-multiple">Evento con manejador múltiple</button>
+    <br><br>
+    <button id="evento-remover">Removiendo eventos con manejadores múltiples</button>
+    <br><br>
+    <h4>Flujo de Eventos</h4>
+    <section class="eventos-flujo"><!-- Para Bubble and catch -->
+      <div class="uno">
+        1
+        <div class="dos">
+          2
+          <div class="tres">
+            3
+            <a href="https://jonmircha.com/" target="_blank" rel="noopener">jonmircha.com</a>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <h3 style="width: 2000px;">Manejo del BOM</h3>
+      <button id="abrir-ventana">Abrir Ventana</button>
+      <br>
+      <br>
+      <button id="cerrar-ventana">Cerrar Ventana</button>
+      <br>
+      <br>
+      <button id="imprimir-ventana">Imprimir Ventana</button>
+      
+    </section>
+    <script src="domYBom.js"></script>
   </body>
 </html>
