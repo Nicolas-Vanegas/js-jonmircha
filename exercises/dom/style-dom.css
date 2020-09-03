@@ -8,9 +8,11 @@ ul,
 li {
   margin: 0;
 }
-body {
+html {
+  scroll-behavior: smooth;
   font-size: 16px;
 }
+
 header {
   background-color: gold;
   padding: 1rem;
@@ -22,7 +24,7 @@ h1 {
 }
 /* Navegación */
 #navegation {
-  opacity: 0.6;
+  opacity: 0.7;
   position: fixed;
   left: -100vw;
   top: 0;
@@ -45,7 +47,8 @@ li {
   width: 100%;
   text-align: center;
   list-style: none;
-  padding: 5vh 0;
+  padding: 0;
+  opacity: 1;
 }
 li:hover {
   background-color: gold;
@@ -58,6 +61,10 @@ a {
   text-decoration: none;
   color: gold;
   font-size: 1.4rem;
+  display: block;
+  width: inherit;
+  height: inherit;
+  padding: 5vh 0;
 }
 
 /*Main*/
